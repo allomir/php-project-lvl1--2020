@@ -1,0 +1,14 @@
+{
+    "name": "alomir/brain-games",
+    "description": "hexlet progect lvl-1",
+    "authors": [
+        {
+            "name": "allomir",
+            "email": "alomir@yandex.ru"
+        }
+    ],
+    "require": {},
+    "bin": [
+        "bin/brain-games"
+    ]
+}
