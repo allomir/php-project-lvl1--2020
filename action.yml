@@ -1,0 +1,13 @@
+name: make lint codesniffer
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+runs:
+  using: "composite"
+  steps:
+    - run: make lint
+      shell: bash
