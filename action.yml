@@ -1,10 +1,5 @@
 name: make lint codesniffer
-
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+description: 'Greet someone'
 
 runs:
   using: "composite"
