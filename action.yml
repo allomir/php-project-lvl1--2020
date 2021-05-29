@@ -1,5 +1,5 @@
-name: make lint codesniffer
-description: 'Greet someone'
+name: linter php_codesniffer
+description: 'make lint github action'
 
 runs:
   using: "composite"
