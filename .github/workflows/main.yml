@@ -7,9 +7,9 @@ on:
     branches: [ main ]
 
 jobs:
-  make_lint:
+  make_lint_job:
     runs-on: ubuntu-latest
-    name: make linter codesniffer 
+    name: make lint action 
     steps:
       - uses: actions/checkout@v2
       - id: foo
