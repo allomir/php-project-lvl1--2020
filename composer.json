@@ -11,7 +11,8 @@
     "autoload": {
         "psr-4": {"Brain-Games\\": "src/"},
         "files": [
-            "src/Cli.php"
+            "src/Cli.php",
+            "src/Engine.php"
         ]
     },
     "require": {
@@ -19,7 +20,8 @@
     },
     "bin": [
         "bin/brain-games",
-        "bin/brain-even"
+        "bin/brain-even",
+        "bin/brain-calc"
     ],
     "require-dev": {
         "squizlabs/php_codesniffer": "*"
