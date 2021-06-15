@@ -1,0 +1,14 @@
+#!/usr/bin/env php
+
+<?php
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use Brain\Games\Engine;
+
+Engine\gameTitle();
+$name = Engine\enterName();
+
+$numRounds = 3;
+$kindOfGame = 'gcd';
+Engine\questions($name, $kindOfGame, $numRounds);
