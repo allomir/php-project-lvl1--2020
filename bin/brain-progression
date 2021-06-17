@@ -10,7 +10,7 @@ Engine\linesGame('welcome');
 
 $user = Engine\promtsGame('user');
 $roundNum = 3;
-$gameKind = 'gcd';
+$gameKind = 'progression';
 
 Engine\linesGameKind($gameKind);
 Engine\startQuestions($user, $gameKind, $roundNum);
