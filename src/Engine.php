@@ -55,7 +55,7 @@ function promtsGame(string $label): string
     echo $strings[$label];
     $string = fgets(STDIN);
 
-    return $string ? trim($string) : '';
+    return $string !== false ? trim($string) : '';
 }
 
 function startQuestions(string $user, string $questionKind, int $roundNum = 3): bool
