@@ -6,5 +6,5 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use Brain\Games\Cli;
 
 Cli\welcomeLine();
-$name = Cli\whatYourName();
-Cli\helloLine($name);
+$user = Cli\whatYourName();
+Cli\helloLine($user);
