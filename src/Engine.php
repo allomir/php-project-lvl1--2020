@@ -144,24 +144,22 @@ function getQuestionGcd(): array
     $question = implode(" ", $parts); // пример 3 9
 
     #Поиск GCD
-    {
-        $numbers = array_map(function ($value): int {
-            return abs($value);
-        }, $parts);
-        sort($numbers, SORT_NUMERIC);
+    $numbers = array_map(function ($value): int {
+        return abs($value);
+    }, $parts);
+    sort($numbers, SORT_NUMERIC);
 
-        $divisors = [];
-        for ($i = 1; $i <= $numbers[0]; $i++) {
-            $result1 = $numbers[1] % $i === 0;
-            $result2 = $numbers[0] % $i === 0;
+    $divisors = [];
+    for ($i = 1; $i <= $numbers[0]; $i++) {
+        $result1 = $numbers[1] % $i === 0;
+        $result2 = $numbers[0] % $i === 0;
 
-            if ($result1 && $result2) {
-                $divisors[] = $i;
-            }
+        if ($result1 && $result2) {
+            $divisors[] = $i;
         }
-        rsort($divisors);
-        $GCD = $divisors[0] ?? 1;
     }
+    rsort($divisors);
+    $GCD = $divisors[0] ?? 1;
 
     return ['question' => $question, 'result' => $GCD];
 }
