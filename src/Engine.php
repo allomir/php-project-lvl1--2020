@@ -45,7 +45,7 @@ function linesGameTitle(string $kind): void
     line($strings[$kind]);
 }
 
-function promtsGame(string $label): ?string
+function promtsGame(string $label): string
 {
     $strings = [
         'user' => "May I have your name? ",
@@ -53,12 +53,15 @@ function promtsGame(string $label): ?string
     ];
 
     echo $strings[$label];
+    $string = fgets(STDIN);
 
-    return trim(fgets(STDIN));
+    return $string ? trim($string) : '';
 }
 
 function startQuestions(string $user, string $questionKind, int $roundNum = 3): bool
 {
+    $correctly = false;
+
     for ($i = 1; $i <= $roundNum; $i++) {
         $questionAndResult = getQuestionAndResult($questionKind);
         $result = $questionAndResult['result'];
