@@ -6,36 +6,13 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 use Brain\Games\Engine;
 
-use function Brain\Games\Engine\getStatuses;
-use function cli\line;
-use function cli\prompt;
+Engine\linesGame('welcome');
 
-$numRounds = Engine\getNumRounds();
+$user = Engine\promtsGame('user');
+Engine\linesGame('hello', ['user' => $user]);
 
-line(Engine\welcome());
-# побочный эффект STDIN
-$name = Engine\getName();
-line(Engine\helloUser($name));
+$roundNum = 3;
+$gameKind = 'calc';
 
-function qustions($name)
-{
-    $question = Engine\getQuestion();
-    line($question);
-    $result = Engine\getResult($question);
-    # побочный эффект STDIN
-    $answer = Engine\getAnswer();
-    return Engine\getStatus($name, $result, $answer);
-}
-
-$isCorrect = true;
-while ($isCorrect === true && $numRounds) {
-    $status = qustions($name);
-    line($status);
-
-    $isCorrect = $status === Engine\getStatuses()['right'];
-    $numRounds--;
-}
-
-if ($isCorrect === true) {
-    line(Engine\getCongratulations($name));
-}
+Engine\linesGameTitle($gameKind);
+Engine\startQuestions($user, $gameKind, $roundNum);
