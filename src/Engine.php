@@ -66,9 +66,9 @@ function startQuestions($user, $questionKind, $roundNum = 3)
         linesGame('question', ['question' => $question]);
         $answer = promtsGame('answer');
 
-        $correct = (string) $result === $answer;
+        $correctly = (string) $result === $answer;
 
-        if ($correct === false) {
+        if ($correctly === false) {
             linesGame('wrong', ['user' => $user, 'result' => $result, 'answer' => $answer]);
             break;
         }
@@ -76,9 +76,11 @@ function startQuestions($user, $questionKind, $roundNum = 3)
         linesGame('right');
     }
 
-    if ($correct !== false) {
+    if ($correctly !== false) {
         linesGame('congratulations', ['user' => $user]);
     }
+
+    return $correctly;
 }
 
 #QUESTIONS
