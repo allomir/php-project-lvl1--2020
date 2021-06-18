@@ -7,12 +7,12 @@ use function cli\prompt;
 
 #LOGIC ENGINE
 
-function getRoundNum()
+function getRoundNum(): int
 {
     return 3;
 }
 
-function linesGame($label, $args = [])
+function linesGame(string $label, array $args = []): void
 {
     $user = $args['user'] ?? '';
     $question = $args['question'] ?? '';
@@ -32,7 +32,7 @@ function linesGame($label, $args = [])
     line($strings[$label]);
 }
 
-function linesGameTitle($kind)
+function linesGameTitle(string $kind): void
 {
     $strings = [
         'calc' => "What is the result of the expression?",
@@ -45,19 +45,19 @@ function linesGameTitle($kind)
     line($strings[$kind]);
 }
 
-function promtsGame($kind)
+function promtsGame(string $label): string
 {
     $strings = [
         'user' => "May I have your name? ",
         'answer' => "Your answer: ",
     ];
 
-    echo $strings[$kind];
+    echo $strings[$label];
 
     return trim(fgets(STDIN));
 }
 
-function startQuestions($user, $questionKind, $roundNum = 3)
+function startQuestions(string $user, string $questionKind, int $roundNum = 3): bool
 {
     for ($i = 1; $i <= $roundNum; $i++) {
         $questionAndResult = getQuestionAndResult($questionKind);
@@ -86,17 +86,17 @@ function startQuestions($user, $questionKind, $roundNum = 3)
 
 #QUESTIONS
 
-function getNumber()
+function getNumber(): int
 {
     return rand(1, 10);
 }
 
-function getOperators()
+function getOperators(): array
 {
     return ['+', '-', '*'];
 }
 
-function getQuestionAndResult($questionKind)
+function getQuestionAndResult(string $questionKind): array
 {
     $qustion = [
         'calc' => getQuestionCalc(),
@@ -109,7 +109,7 @@ function getQuestionAndResult($questionKind)
     return $qustion[$questionKind];
 }
 
-function getQuestionCalc()
+function getQuestionCalc(): array
 {
     $operators = getOperators();
 
@@ -126,7 +126,7 @@ function getQuestionCalc()
     return ['question' => $question, 'result' => $result];
 }
 
-function getQuestionEven()
+function getQuestionEven(): array
 {
     $question = getNumber();
     $result = $question % 2 === 0 ? 'yes' : 'no';
@@ -134,7 +134,7 @@ function getQuestionEven()
     return ['question' => $question, 'result' => $result];
 }
 
-function getQuestionGcd()
+function getQuestionGcd(): array
 {
     $parts = [
         getNumber(),
@@ -166,7 +166,7 @@ function getQuestionGcd()
     return ['question' => $question, 'result' => $GCD];
 }
 
-function getQuestionProgression()
+function getQuestionProgression(): array
 {
     $parts = array_fill(0, rand(5, 10), null);
     $firstNum = rand(1, 10);
@@ -185,7 +185,7 @@ function getQuestionProgression()
     return ['question' => $question, 'result' => $result];
 }
 
-function getQuestionPrime()
+function getQuestionPrime(): array
 {
     $primes = [
         2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47,

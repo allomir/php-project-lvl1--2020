@@ -7,6 +7,9 @@ validate:
 brain-games:
 	./bin/brain-games
 
+brain-calc:
+	./bin/brain-calc
+
 brain-even:
 	./bin/brain-even
 
