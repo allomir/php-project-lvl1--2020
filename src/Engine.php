@@ -36,6 +36,7 @@ function linesGameTitle($kind)
 {
     $strings = [
         'calc' => "What is the result of the expression?",
+        'even' => "Answer \"yes\" if the number is even, otherwise answer \"no\".",
         'gcd' => "Find the greatest common divisor of given numbers.",
         'progression' => "What number is missing in the progression?",
         'prime' => "Answer \"yes\" if given number is prime. Otherwise answer \"no\".",
@@ -99,6 +100,7 @@ function getQuestionAndResult($questionKind)
 {
     $qustion = [
         'calc' => getQuestionCalc(),
+        'even' => getQuestionEven(),
         'gcd' => getQuestionGcd(),
         'progression' => getQuestionProgression(),
         'prime' => getQuestionPrime(),
@@ -120,6 +122,14 @@ function getQuestionCalc()
     $question = implode(" ", $parts); // пример 5 + 3
     $result = 'follow eval';
     eval("\$result = $question;");
+
+    return ['question' => $question, 'result' => $result];
+}
+
+function getQuestionEven()
+{
+    $question = getNumber();
+    $result = $question % 2 === 0 ? 'yes' : 'no';
 
     return ['question' => $question, 'result' => $result];
 }
