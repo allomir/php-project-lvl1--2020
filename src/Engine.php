@@ -32,12 +32,13 @@ function linesGame($label, $args = [])
     line($strings[$label]);
 }
 
-function linesGameKind($kind)
+function linesGameTitle($kind)
 {
     $strings = [
         'calc' => "What is the result of the expression?",
         'gcd' => "Find the greatest common divisor of given numbers.",
         'progression' => "What number is missing in the progression?",
+        'prime' => "Answer \"yes\" if given number is prime. Otherwise answer \"no\".",
     ];
 
     line($strings[$kind]);
@@ -82,7 +83,7 @@ function startQuestions($user, $questionKind, $roundNum = 3)
 
 #QUESTIONS
 
-function getOperand()
+function getNumber()
 {
     return rand(1, 10);
 }
@@ -98,6 +99,7 @@ function getQuestionAndResult($questionKind)
         'calc' => getQuestionCalc(),
         'gcd' => getQuestionGcd(),
         'progression' => getQuestionProgression(),
+        'prime' => getQuestionPrime(),
     ];
 
     return $qustion[$questionKind];
@@ -108,13 +110,13 @@ function getQuestionCalc()
     $operators = getOperators();
 
     $parts = [
-        getOperand(),
+        getNumber(),
         $operators[array_rand($operators)],
-        getOperand()
+        getNumber()
     ];
 
     $question = implode(" ", $parts); // пример 5 + 3
-    $result = 'next eval';
+    $result = 'follow eval';
     eval("\$result = $question;");
 
     return ['question' => $question, 'result' => $result];
@@ -123,8 +125,8 @@ function getQuestionCalc()
 function getQuestionGcd()
 {
     $parts = [
-        getOperand(),
-        getOperand(),
+        getNumber(),
+        getNumber(),
     ];
 
     $question = implode(" ", $parts); // пример 3 9
@@ -167,6 +169,21 @@ function getQuestionProgression()
 
     $partsWithHint[$hintedKey] = '..';
     $question = implode(" ", $partsWithHint);
+
+    return ['question' => $question, 'result' => $result];
+}
+
+function getQuestionPrime()
+{
+    $primes = [
+        2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47,
+        53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109,
+        113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179,
+        181, 191, 193, 197, 199
+    ];
+
+    $question = getNumber();
+    $result = in_array($question, $primes, true) ? 'yes' : 'no';
 
     return ['question' => $question, 'result' => $result];
 }

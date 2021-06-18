@@ -9,8 +9,10 @@ use Brain\Games\Engine;
 Engine\linesGame('welcome');
 
 $user = Engine\promtsGame('user');
+Engine\linesGame('hello', ['user' => $user]);
+
 $roundNum = 3;
 $gameKind = 'gcd';
 
-Engine\linesGameKind($gameKind);
+Engine\linesGameTitle($gameKind);
 Engine\startQuestions($user, $gameKind, $roundNum);

@@ -12,7 +12,7 @@ $user = Engine\promtsGame('user');
 Engine\linesGame('hello', ['user' => $user]);
 
 $roundNum = 3;
-$gameKind = 'progression';
+$gameKind = 'prime';
 
 Engine\linesGameTitle($gameKind);
 Engine\startQuestions($user, $gameKind, $roundNum);
